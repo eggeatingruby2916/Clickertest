@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,12 +18,14 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+    
+    public ItemManager itemManager;
 
     private long _gold;
     private long _click = 1;
     private long _autoClick;
     private DateTime _lastSaveTime;
-
+    
     private void Awake()
     {
         if (instance == null)
@@ -67,7 +70,7 @@ public class GameManager : MonoBehaviour
         TimeSpan elapsed = DateTime.Now - _lastSaveTime;
         long offlineSeconds = (long)elapsed.TotalSeconds;
 
-        if (offlineSeconds <= 60)
+        if (offlineSeconds <= 0)
             return;
 
         long reward = _autoClick * offlineSeconds;
@@ -95,6 +98,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString("Click", _click.ToString());
         PlayerPrefs.SetString("AutoClick", _autoClick.ToString());
         PlayerPrefs.SetString("LastSaveTime", DateTime.Now.ToBinary().ToString());
+        
+        if(itemManager != null) itemManager.Save();
     }
 
     private void Load()

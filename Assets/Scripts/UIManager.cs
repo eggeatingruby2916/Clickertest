@@ -6,10 +6,9 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public ItemManager itemManager;
+    
     public GameObject Game_Start_Panel;
-
-    public List<ClickUpgradeData> clickUpgradeDatas = new List<ClickUpgradeData>();
-    public List<AutoClickUpgradeData> autoClickUpgradeDatas = new List<AutoClickUpgradeData>();
     
     public List<TMP_Text> clickUpgradeButtonTexts = new List<TMP_Text>();
     public List<TMP_Text> autoClickUpgradeButtonTexts = new List<TMP_Text>();
@@ -55,14 +54,12 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < clickUpgradeButtonTexts.Count; i++)
         {
-            var data = clickUpgradeDatas[i];
-            clickUpgradeButtonTexts[i].text = $"Level : {data.level} \n Add Click : {NumberFormatter.Format(data.addClick)} \n Cost : {NumberFormatter.Format(data.cost)}";
+            clickUpgradeButtonTexts[i].text = $"Level : {itemManager.level[i]} \nAdd Click : {NumberFormatter.Format(itemManager.addClick[i])} \nCost : {NumberFormatter.Format(itemManager.cost[i])}";
         }
 
         for (int i = 0; i < autoClickUpgradeButtonTexts.Count; i++)
         {
-            var data = autoClickUpgradeDatas[i];
-            autoClickUpgradeButtonTexts[i].text = $"Level : {data.level} \n Add Auto Click : {NumberFormatter.Format(data.addAutoClick)} \n Cost : {NumberFormatter.Format(data.cost)}";
+            autoClickUpgradeButtonTexts[i].text = $"Level : {itemManager.level[i]} \nAdd Auto Click : {NumberFormatter.Format(itemManager.addAutoClick[i])} \nCost : {NumberFormatter.Format(itemManager.cost[i])}";
         }
     }
 
@@ -73,50 +70,28 @@ public class UIManager : MonoBehaviour
 
     public void ClickUpgradeButtonClick(int index)
     {
-        if (GameManager.Instance.GetGold() < clickUpgradeDatas[index].cost)
+        if (GameManager.Instance.GetGold() < itemManager.cost[index])
         {
             Debug.Log("돈이 부족합니다.");
             return;
         }
 
-        GameManager.Instance.AddClick(clickUpgradeDatas[index].addClick);
-        GameManager.Instance.MinusGold(clickUpgradeDatas[index].cost);
-        NextClickUpgrade(index);
+        GameManager.Instance.AddClick(itemManager.addClick[index]);
+        GameManager.Instance.MinusGold(itemManager.cost[index]);
+        itemManager.NextClickUpgrade(index);
     }
 
     public void AutoClickUpgradeButtonClick(int index)
     {
-        if (GameManager.Instance.GetGold() < autoClickUpgradeDatas[index].cost)
+        if (GameManager.Instance.GetGold() < itemManager.cost[index])
         {
             Debug.Log("돈이 부족합니다.");
             return;
         }
 
-        GameManager.Instance.AddAutoClick(autoClickUpgradeDatas[index].addAutoClick);
-        GameManager.Instance.MinusGold(autoClickUpgradeDatas[index].cost);
-        NextAutoClickUpgrade(index);
+        GameManager.Instance.AddAutoClick(itemManager.addAutoClick[index]);
+        GameManager.Instance.MinusGold(itemManager.cost[index]);
+        itemManager.NextAutoClickUpgrade(index);
     }
-
-    private void NextClickUpgrade(int index)
-    {
-        var data = clickUpgradeDatas[index];
-        data.addClickMultiplier *= data.effectRiseMultiplier;
-        data.addClick = (long)Math.Round(data.addClickMultiplier);
-        NextUpgrade(data);
-    }
-
-    private void NextAutoClickUpgrade(int index)
-    {
-        var data = autoClickUpgradeDatas[index];
-        data.addAutoClickMultiplier *= data.effectRiseMultiplier;
-        data.addAutoClick = (long)Math.Round(data.addAutoClickMultiplier);
-        NextUpgrade(data);
-    }
-
-    private void NextUpgrade(UpgradeData data)
-    {
-        data.level++;
-        data.costMultiplier *= data.costRiseMultiplier;
-        data.cost = (long)Math.Round(data.costMultiplier);
-    }
+    
 }

@@ -396,7 +396,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 112617245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864358650}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: AutoClickUpgradeButtonClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &395420052
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,8 +468,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Current Gold : 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fa86cf2d44922349b21a374064da17d, type: 2}
+  m_sharedMaterial: {fileID: -1218020320323549940, guid: 7fa86cf2d44922349b21a374064da17d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -949,10 +961,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Current AutoClick : 0'
+  m_text: 'Current Auto Click : 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fa86cf2d44922349b21a374064da17d, type: 2}
+  m_sharedMaterial: {fileID: -1218020320323549940, guid: 7fa86cf2d44922349b21a374064da17d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1047,7 +1059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &812992834
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1178,9 +1190,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25901058831693d4cbd65226326ae042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  Game_Start_Panel: {fileID: 1417862570}
+  clickUpgradeDatas:
+  - {fileID: 11400000, guid: 44e4b210060f8194fa224eb487d82e34, type: 2}
+  - {fileID: 11400000, guid: 231070eb2278f614192940bc3fe9c948, type: 2}
+  autoClickUpgradeDatas:
+  - {fileID: 11400000, guid: a00c70d2ae386f94e860bf5de1061da3, type: 2}
+  - {fileID: 11400000, guid: 7ab599f41b2e90246823d57fb5810f61, type: 2}
+  clickUpgradeButtonTexts:
+  - {fileID: 1431589446}
+  - {fileID: 1587363922}
+  autoClickUpgradeButtonTexts:
+  - {fileID: 101124465}
+  - {fileID: 1109067477}
   currentGoldText: {fileID: 395420054}
   currentClickText: {fileID: 1573148814}
   autoClickText: {fileID: 720759270}
+  Comeback_Text: {fileID: 711835804}
+  AddGold_Text: {fileID: 1873527235}
 --- !u!4 &864358651
 Transform:
   m_ObjectHideFlags: 0
@@ -1324,7 +1351,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 867907449}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864358650}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: MainButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &912450046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1524,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1069895561}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864358650}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: CanelButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1069895561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,7 +1852,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1152056203}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864358650}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: AutoClickUpgradeButtonClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1161459367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,7 +2104,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1177654752}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864358650}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ClickUpgradeButtonClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1417862570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,8 +2393,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Current Click : 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7fa86cf2d44922349b21a374064da17d, type: 2}
+  m_sharedMaterial: {fileID: -1218020320323549940, guid: 7fa86cf2d44922349b21a374064da17d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2673,7 +2748,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1806070321}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864358650}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ClickUpgradeButtonClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1873527233
 GameObject:
   m_ObjectHideFlags: 0
