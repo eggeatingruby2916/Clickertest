@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -18,8 +17,10 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    
+
     public ItemManager itemManager;
+
+    public const long MAX_VALUE = 999_999_999_999_999_999L;  // 약 100경
 
     private long _gold;
     private long _click = 1;
@@ -46,16 +47,38 @@ public class GameManager : MonoBehaviour
     }
 
     public long GetGold() { return _gold; }
-    public long AddGold(long gold) { _gold += gold; return _gold; }
+    public long AddGold(long gold)
+    {
+        if (gold <= 0) return _gold;
+        if (_gold >= MAX_VALUE - gold)
+            _gold = MAX_VALUE;
+        else
+            _gold += gold;
+        return _gold;
+    }
     public long MinusGold(long gold) { _gold -= gold; return _gold; }
 
     public long GetClick() { return _click; }
-    public long AddClick(long click) { _click += click; return _click; }
+    public long AddClick(long click)
+    {
+        if (click <= 0) return _click;
+        if (_click >= MAX_VALUE - click)
+            _click = MAX_VALUE;
+        else
+            _click += click;
+        return _click;
+    }
 
     public long GetAutoClick() { return _autoClick; }
-    public long AddAutoClick(long click) { _autoClick += click; return _autoClick; }
-
-    public DateTime GetLastSaveTime() { return _lastSaveTime; }
+    public long AddAutoClick(long click)
+    {
+        if (click <= 0) return _autoClick;
+        if (_autoClick >= MAX_VALUE - click)
+            _autoClick = MAX_VALUE;
+        else
+            _autoClick += click;
+        return _autoClick;
+    }
 
     public void CalculateOfflineReward(out int hours, out int minutes, out int seconds, out long rewardGold)
     {
@@ -112,5 +135,7 @@ public class GameManager : MonoBehaviour
         _lastSaveTime = string.IsNullOrEmpty(savedTime)
             ? DateTime.Now
             : DateTime.FromBinary(long.Parse(savedTime));
+
+        if (itemManager != null) itemManager.Load();
     }
 }
