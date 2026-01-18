@@ -4,5 +4,6 @@ using UnityEngine;
 public class ClickUpgradeData : UpgradeData
 {
     [Header("# Click Upgrade Data")]
-    public int addClick;
+    public long addClick;
+    public double addClickMultiplier;
 }
